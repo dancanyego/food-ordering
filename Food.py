@@ -57,6 +57,12 @@ app_actions = {
 SALES_TAX_RATE = 0.07
 cart = {}
 
+def greet_customer(name):
+    print(f"Welcome to {RESTURANT_NAME}!")
+    print(f"My name is {name}, and I'll be your server today.")
+    print("Feel free to order anything from the menu .")
+    print("-"*20)
+  
 # Displaying the menu
 def display_menu():
     print("Here is the menu:")
@@ -68,13 +74,14 @@ def display_menu():
         price = menu[sku]['price']
         print("(" + parsed_sku + ")" " " + item +": $" + str(price))
     print("\n")
+# Adding menu items to cart
+
+def add_to_cart():
+    pass
+
 
 # Defining the functions
-def greet_customer(name):
-    print(f"Welcome to {RESTURANT_NAME}!")
-    print(f"My name is {name}, and I'll be your server today.")
-    print("Please have a seat, and I'll be right back with your menu.")
-    print("Here is our menu:")
+
     
 
 
