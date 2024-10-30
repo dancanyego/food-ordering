@@ -102,6 +102,17 @@ def drop_item(sku):
     else:
         print("I'm sorry.", removed_val['name'], "is not currently in the cart.")
 
-# modify the cart items quantity
+# modify the cart items 
+
+def modify_item(sku,quantity):
+    if sku in cart:
+        if quantity > 0:
+            cart[sku] = quantity
+            print("Modified", menu[sku]['name'], "quantity to ", quantity, " in the cart.")
+        else:
+            drop_item(sku)
+    else:
+        print(f"I'm sorry.", menu[sku]['name'], "is not currently in the cart.")
+
 
 
