@@ -91,11 +91,17 @@ def add_to_cart(sku,quantity = 1):
 # removing from cart
 
 def drop_item(sku):
+    """
+    Remove an item from the cart.
+    
+    :param string sku: The input SKU number to remove from the cart.
+    """
     if sku in cart:
-        item_name = menu[sku]['name']
-        removed_item = cart.pop(item_name)
-        print(f"\nRemoved", removed_item, "from the cart.")
+        removed_val = cart.pop(sku)
+        print(f"Removed", removed_val['name'], "from the cart.")
     else:
-        print(f"\nfailed ",removed_item,"not in Cart ")
+        print("I'm sorry.", removed_val['name'], "is not currently in the cart.")
+
+# modify the cart items quantity
 
 
