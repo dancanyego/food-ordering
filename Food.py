@@ -48,8 +48,10 @@ menu = {
 
 # Defining the functions
 def greet_customer(name):
-    print(f"Welcome to {resturant_name}!")
+    print(f"Welcome to {RESTURANT_NAME}!")
     print(f"My name is {name}, and I'll be your server today.")
     print("Please have a seat, and I'll be right back with your menu.")
+    print("Here is our menu:")
+    print(menu)
 
 
