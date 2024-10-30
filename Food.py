@@ -56,7 +56,12 @@ app_actions = {
 
 SALES_TAX_RATE = 0.07
 cart = {}
-
+def display_menu():
+    print("Here is the menu:")
+    print("-"*20)
+    print("\n****Menu****\n")
+    for sku in menu:
+        parsed_sku = sku[3:]
 # Defining the functions
 def greet_customer(name):
     print(f"Welcome to {RESTURANT_NAME}!")
