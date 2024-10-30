@@ -45,6 +45,17 @@ menu = {
         }
 }
 
+app_actions = {
+    "1": "Add a new menu item to cart",
+    "2": "Remove an item from the cart",
+    "3": "Modify a cart item's quantity",
+    "4": "View cart",
+    "5": "Checkout",
+    "6": "Exit"
+}
+
+SALES_TAX_RATE = 0.07
+cart = {}
 
 # Defining the functions
 def greet_customer(name):
@@ -52,6 +63,6 @@ def greet_customer(name):
     print(f"My name is {name}, and I'll be your server today.")
     print("Please have a seat, and I'll be right back with your menu.")
     print("Here is our menu:")
-    print(menu)
+    
 
 
