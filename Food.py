@@ -114,5 +114,22 @@ def modify_item(sku,quantity):
     else:
         print(f"I'm sorry.", menu[sku]['name'], "is not currently in the cart.")
 
+# view Cart
 
+def display_cart():
+    print('-'*10)
+    print("\n****Cart Contents****\n")
+    
+    subtotals = 0
+    for sku in cart:
+        if sku in menu:
+            quantity = cart[sku]
+            subtotals += menu[sku]['price'] * quantity
+            print(quantity, " X ",menu[sku]['name'])
 
+    tax = subtotals * SALES_TAX_RATE
+    total = subtotals + tax
+    print("Total : $ ", round(total,2))
+    print("\n")
+
+# cheking out
