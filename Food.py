@@ -88,8 +88,14 @@ def add_to_cart(sku,quantity = 1):
         print("Failed to add ", quantity, "of", menu[sku]['name', " to cart"])
           
 
-# Dremoving from cart
+# removing from cart
 
-    
+def drop_item(sku):
+    if sku in cart:
+        item_name = menu[sku]['name']
+        removed_item = cart.pop(item_name)
+        print(f"\nRemoved", removed_item, "from the cart.")
+    else:
+        print(f"\nfailed ",removed_item,"not in Cart ")
 
 
