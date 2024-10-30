@@ -76,9 +76,17 @@ def display_menu():
     print("\n")
 # Adding menu items to cart
 
-def add_to_cart():
-    pass
-
+def add_to_cart(sku,quantity = 1):
+    if sku in menu:
+        if sku in cart:
+            cart[menu] += quantity
+            
+        else:
+            cart[sku] = quantity      
+        print("Added ", quantity, " of ", menu[sku]['name'], " to cart.")
+    else:
+        print("Failed to add ", quantity, "of", menu[sku]['name', " to cart"])
+          
 
 # Defining the functions
 
