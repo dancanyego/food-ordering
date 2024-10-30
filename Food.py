@@ -88,7 +88,7 @@ def add_to_cart(sku,quantity = 1):
         print("Failed to add ", quantity, "of", menu[sku]['name', " to cart"])
           
 
-# Defining the functions
+# Dremoving from cart
 
     
 
