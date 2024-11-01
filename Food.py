@@ -133,3 +133,9 @@ def display_cart():
     print("\n")
 
 # cheking out
+
+def check_out():
+    print("****Checkout****")
+    display_cart()
+    print("Thank you for your order! Goodbye!")
+    print("\n")
