@@ -58,8 +58,8 @@ SALES_TAX_RATE = 0.07
 cart = {}
 
 def greet_customer(name):
-    print(f"Welcome to {RESTURANT_NAME}!")
-    print(f"My name is {name}, and I'll be your server today.")
+    name = input("Hellow Whats your name")
+    print(f"Welcome {name} to {RESTURANT_NAME}!")
     print("Feel free to order anything from the menu .")
     print("-"*20)
   
@@ -139,3 +139,7 @@ def check_out():
     display_cart()
     print("Thank you for your order! Goodbye!")
     print("\n")
+
+# get user input
+
+def get_sku_prompt(sku)
