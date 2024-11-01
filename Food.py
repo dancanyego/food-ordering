@@ -188,4 +188,7 @@ def order_loop():
             # The user wants to order a menu item
             display_menu()
             sku_prompt = input("Please enter The sku number for the item menu you want to order: ")
-            
+            quantity_prompt = "Please enter the quantity you want to order [default is 1]: "
+            ordered_sku,quantity = get_sku_and_quantity(sku_prompt,quantity_prompt)
+            add_to_cart(ordered_sku,quantity)
+
