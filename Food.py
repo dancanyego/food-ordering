@@ -184,3 +184,8 @@ def order_loop():
             print("(" + number + ")" + description)
         
         response = input("Choose The number of action you want to take")
+        if response == "1":
+            # The user wants to order a menu item
+            display_menu()
+            sku_prompt = input("Please enter The sku number for the item menu you want to order: ")
+            
