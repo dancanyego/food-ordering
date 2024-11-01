@@ -143,10 +143,32 @@ def check_out():
 # get user input
 
 def get_sku_and_quantity(sku_prompt,quantity_prompt = None):
+    """
+    Get input from the user.
+    
+    :param string sku_prompt: A string representing the prompt to display to the user before they enter the SKU number.
+    :param string quantity_prompt: A string representing the prompt to display to the user before they enter the quantity.
+        This defaults to None for cases where quanitity input is not needed.
+        
+    :returns: The full sku# value and the quantity (in certain cases)
+    """
     
     item_sku = input(sku_prompt)
 
     # concatinate sku to the string number
     item_sku = "sku" +item_sku
+    if quantity_prompt:
+        quantity = input(quantity_prompt)
+        # check if the user has typed a digit
+        if not quantity.isdigit():
+            quantity = 1 # default value if not digit
+        quantity = int(quantity)
+
+        return item_sku,quantity
+
+    # when quantity is none no need to get the input of quantity
+    else:
+        return item_sku
+
 
 
