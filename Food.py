@@ -170,5 +170,17 @@ def get_sku_and_quantity(sku_prompt,quantity_prompt = None):
     else:
         return item_sku
 
+def order_loop():
+    """Loop ordering actions until checkout"""
+    greet_customer()
 
+    ordering = True
 
+    while ordering:
+        print("\n****Ordering Actions****\n")
+
+        for number in app_actions:
+            description = app_actions[number]
+            print("(" + number + ")" + description)
+        
+        response = input("Choose The number of action you want to take")
