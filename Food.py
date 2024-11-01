@@ -142,4 +142,11 @@ def check_out():
 
 # get user input
 
-def get_sku_prompt(sku)
+def get_sku_and_quantity(sku_prompt,quantity_prompt = None):
+    
+    item_sku = input(sku_prompt)
+
+    # concatinate sku to the string number
+    item_sku = "sku" +item_sku
+
+
