@@ -211,6 +211,11 @@ def order_loop():
             # checkout
             check_out()
             ordering = False
-                    
+        elif response == "6":
+            # exitd the app
+            print("Goodbye!")
+            ordering = False
+        
+
 
 
