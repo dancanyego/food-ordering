@@ -204,7 +204,13 @@ def order_loop():
             quantity_prompt = "Please enter the quantity you want to change to [default is 1]: "
             item_sku,quantity = get_sku_and_quantity(sku_prompt,quantity_prompt)
             modify_item(item_sku,quantity)
-        
-            
+        elif response == "4":
+            # user wants to view cart
+            display_cart()
+        elif response == "5":
+            # checkout
+            check_out()
+            ordering = False
+                    
 
 
