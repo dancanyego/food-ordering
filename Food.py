@@ -1,6 +1,6 @@
 # Defining the global variables
 
-RESTURANT_NAME = "The Hungry Crabs"
+RESTAURANT_NAME = "The Hungry Crabs"
 
 menu = {
     "sku1": {
@@ -42,7 +42,7 @@ menu = {
     "sku10": {
         "name": "Sauce",
         "price": 0.75
-        }
+    }
 }
 
 app_actions = {
@@ -56,69 +56,59 @@ app_actions = {
 
 SALES_TAX_RATE = 0.07
 cart = {}
-name = input("Hellow Whats your name: ")
+name = input("Hello, What's your name: ")
 
 def greet_customer(cust_name):
-    cust_name = name
-    print(f"Welcome {cust_name} to {RESTURANT_NAME}!")
-    print("Feel free to order anything from the menu .")
-    print("-"*20)
-  
+    print(f"Welcome {cust_name} to {RESTAURANT_NAME}!")
+    print("Feel free to order anything from the menu.")
+    print("-" * 20)
+
 # Displaying the menu
 def display_menu():
     print("Here is the menu:")
-    print("-"*20)
+    print("-" * 20)
     print("\n****Menu****\n")
     for sku in menu:
         parsed_sku = sku[3:]
         item = menu[sku]['name']
         price = menu[sku]['price']
-        print("(" + parsed_sku + ")" " " + item +": $" + str(price))
+        print(f"({parsed_sku}) {item}: ${price}")
     print("\n")
-# Adding menu items to cart
 
-def add_to_cart(sku,quantity = 1):
+# Adding menu items to cart
+def add_to_cart(sku, quantity=1):
     if sku in menu:
         if sku in cart:
-            cart[menu] += quantity
-            
+            cart[sku] += quantity
         else:
-            cart[sku] = quantity      
-        print("Added ", quantity, " of ", menu[sku]['name'], " to cart.")
+            cart[sku] = quantity
+        print(f"Added {quantity} of {menu[sku]['name']} to cart.")
     else:
-        print("Failed to add ", quantity, "of", menu[sku]['name', " to cart"])
-          
+        print(f"Failed to add {quantity} of {menu[sku]['name']} to cart.")
 
-# removing from cart
-
+# Removing item from cart
 def drop_item(sku):
-    """
-    Remove an item from the cart.
-    
-    :param string sku: The input SKU number to remove from the cart.
-    """
     if sku in cart:
-        removed_val = cart.pop(sku)
-        print(f"Removed", removed_val['name'], "from the cart.")
+        removed_name = menu[sku]['name']
+        cart.pop(sku)
+        print(f"Removed {removed_name} from the cart.")
     else:
-        print("I'm sorry.", removed_val['name'], "is not currently in the cart.")
+        print(f"{menu[sku]['name']} is not currently in the cart.")
 
-# modify the cart items 
-
-def modify_item(sku,quantity):
+# Modifying cart items
+def modify_item(sku, quantity):
     if sku in cart:
         if quantity > 0:
             cart[sku] = quantity
-            print("Modified", menu[sku]['name'], "quantity to ", quantity, " in the cart.")
+            print(f"Modified {menu[sku]['name']} quantity to {quantity} in the cart.")
         else:
             drop_item(sku)
     else:
-        print(f"I'm sorry.", menu[sku]['name'], "is not currently in the cart.")
+        print(f"{menu[sku]['name']} is not currently in the cart.")
 
-# view Cart
-
+# Viewing Cart
 def display_cart():
-    print('-'*10)
+    print('-' * 10)
     print("\n****Cart Contents****\n")
     
     subtotals = 0
@@ -126,101 +116,68 @@ def display_cart():
         if sku in menu:
             quantity = cart[sku]
             subtotals += menu[sku]['price'] * quantity
-            print(quantity, " X ",menu[sku]['name'])
-
+            print(f"{quantity} x {menu[sku]['name']}: ${menu[sku]['price'] * quantity}")
     tax = subtotals * SALES_TAX_RATE
     total = subtotals + tax
-    print("Total : $ ", round(total,2))
-    print("\n")
+    print(f"Total: ${round(total, 2)}\n")
 
-# cheking out
-
+# Checking out
 def check_out():
     print("****Checkout****")
     display_cart()
-    print("Thank you for your order! Goodbye!")
-    print("\n")
+    print("Thank you for your order! Goodbye!\n")
 
-# get user input
-
-def get_sku_and_quantity(sku_prompt,quantity_prompt = None):
-    """
-    Get input from the user.
-    
-    :param string sku_prompt: A string representing the prompt to display to the user before they enter the SKU number.
-    :param string quantity_prompt: A string representing the prompt to display to the user before they enter the quantity.
-        This defaults to None for cases where quanitity input is not needed.
-        
-    :returns: The full sku# value and the quantity (in certain cases)
-    """
-    
+# Getting user input for SKU and quantity
+def get_sku_and_quantity(sku_prompt, quantity_prompt=None):
     item_sku = input(sku_prompt)
-
-    # concatinate sku to the string number
-    item_sku = "sku" +item_sku
+    item_sku = "sku" + item_sku
     if quantity_prompt:
         quantity = input(quantity_prompt)
-        # check if the user has typed a digit
         if not quantity.isdigit():
-            quantity = 1 # default value if not digit
+            quantity = 1
         quantity = int(quantity)
-
-        return item_sku,quantity
-
-    # when quantity is none no need to get the input of quantity
+        return item_sku, quantity
     else:
         return item_sku
 
+# Order loop
 def order_loop():
-    """Loop ordering actions until checkout"""
     greet_customer(name)
-
     ordering = True
 
     while ordering:
         print("\n****Ordering Actions****\n")
-
         for number in app_actions:
             description = app_actions[number]
-            print("(" + number + ")" + description)
+            print(f"({number}) {description}")
         
-        response = input("Choose The number of action you want to take")
+        response = input("Choose the number of action you want to take: ")
         if response == "1":
-            # The user wants to order a menu item
             display_menu()
-            sku_prompt = input("Please enter The sku number for the item menu you want to order: ")
+            sku_prompt = "Please enter the SKU number for the item you want to order: "
             quantity_prompt = "Please enter the quantity you want to order [default is 1]: "
-            ordered_sku,quantity = get_sku_and_quantity(sku_prompt,quantity_prompt)
-            add_to_cart(ordered_sku,quantity)
+            ordered_sku, quantity = get_sku_and_quantity(sku_prompt, quantity_prompt)
+            add_to_cart(ordered_sku, quantity)
         elif response == "2":
-            # user wants to remove item from cart
             display_cart()
-            sku_prompt = input("Please specify the item you want to remove from cart: ")
+            sku_prompt = "Please specify the item SKU you want to remove from cart: "
             item_sku = get_sku_and_quantity(sku_prompt)
             drop_item(item_sku)
         elif response == "3":
-            # user wants to modify quantity item in cart
             display_menu()
-            sku_prompt = "Please enter the SKU number for the menu item you want to modify: "
+            sku_prompt = "Please enter the SKU number for the item you want to modify: "
             quantity_prompt = "Please enter the quantity you want to change to [default is 1]: "
-            item_sku,quantity = get_sku_and_quantity(sku_prompt,quantity_prompt)
-            modify_item(item_sku,quantity)
+            item_sku, quantity = get_sku_and_quantity(sku_prompt, quantity_prompt)
+            modify_item(item_sku, quantity)
         elif response == "4":
-            # user wants to view cart
             display_cart()
         elif response == "5":
-            # checkout
             check_out()
             ordering = False
         elif response == "6":
-            # exitd the app
-            print(f"Goodbye! {name}")
+            print(f"Goodbye, {name}!")
             ordering = False
         else:
-            print("Invalid command Try again!!")
-
+            print("Invalid command. Try again.")
 
 order_loop()
-
-
-
