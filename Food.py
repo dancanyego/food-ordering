@@ -197,6 +197,14 @@ def order_loop():
             sku_prompt = input("Please specify the item you want to remove from cart: ")
             item_sku = get_sku_and_quantity(sku_prompt)
             drop_item(item_sku)
-        elif 
+        elif response == "3":
+            # user wants to modify quantity item in cart
+            display_menu()
+            sku_prompt = "Please enter the SKU number for the menu item you want to modify: "
+            quantity_prompt = "Please enter the quantity you want to change to [default is 1]: "
+            item_sku,quantity = get_sku_and_quantity(sku_prompt,quantity_prompt)
+            modify_item(item_sku,quantity)
+        
+            
 
 
