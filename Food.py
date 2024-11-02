@@ -215,7 +215,8 @@ def order_loop():
             # exitd the app
             print("Goodbye!")
             ordering = False
-        
+        else:
+            print("Invalid command Try again")
 
 
 
