@@ -56,12 +56,22 @@ app_actions = {
 
 SALES_TAX_RATE = 0.07
 cart = {}
+cash_amount = 0
 name = input("Hello, What's your name: ")
 
 def greet_customer(cust_name):
     print(f"Welcome {cust_name} to {RESTAURANT_NAME}!")
     print("Feel free to order anything from the menu.")
     print("-" * 20)
+
+def get_cash_amount():
+    money = input(f"Hello {name} How much do you have of today: ")
+    if int(money) > 0:
+        cash_amount += money
+        print(f"Money added to wallet your amount is {cash_amount}")
+    else:
+        print("Invalid amount ! try again")
+
 
 # Displaying the menu
 def display_menu():
