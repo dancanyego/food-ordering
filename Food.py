@@ -191,4 +191,12 @@ def order_loop():
             quantity_prompt = "Please enter the quantity you want to order [default is 1]: "
             ordered_sku,quantity = get_sku_and_quantity(sku_prompt,quantity_prompt)
             add_to_cart(ordered_sku,quantity)
+        elif response == "2":
+            # user wants to remove item from cart
+            display_cart()
+            sku_prompt = input("Please specify the item you want to remove from cart: ")
+            item_sku = get_sku_and_quantity(sku_prompt)
+            drop_item(item_sku)
+        elif 
+
 
