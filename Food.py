@@ -56,10 +56,11 @@ app_actions = {
 
 SALES_TAX_RATE = 0.07
 cart = {}
+name = input("Hellow Whats your name: ")
 
-def greet_customer(name):
-    name = input("Hellow Whats your name")
-    print(f"Welcome {name} to {RESTURANT_NAME}!")
+def greet_customer(cust_name):
+    cust_name = name
+    print(f"Welcome {cust_name} to {RESTURANT_NAME}!")
     print("Feel free to order anything from the menu .")
     print("-"*20)
   
@@ -172,7 +173,7 @@ def get_sku_and_quantity(sku_prompt,quantity_prompt = None):
 
 def order_loop():
     """Loop ordering actions until checkout"""
-    greet_customer()
+    greet_customer(name)
 
     ordering = True
 
@@ -213,10 +214,13 @@ def order_loop():
             ordering = False
         elif response == "6":
             # exitd the app
-            print("Goodbye!")
+            print(f"Goodbye! {name}")
             ordering = False
         else:
-            print("Invalid command Try again")
+            print("Invalid command Try again!!")
+
+
+order_loop()
 
 
 
