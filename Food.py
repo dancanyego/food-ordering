@@ -144,7 +144,17 @@ def calculate_balance(total_cost):
 def check_out():
     print("****Checkout****")
     display_cart()
-
+    
+    # Calculate the subtotal, tax, and total cost
+    subtotals = sum(menu[sku]['price'] * quantity for sku, quantity in cart.items())
+    tax = subtotals * SALES_TAX_RATE
+    total_cost = subtotals + tax
+    
+    print(f"Total cost: ${round(total_cost, 2)}")
+    
+    # Ask for user's amount and calculate balance
+    calculate_balance(total_cost)
+    
     print("Thank you for your order! Goodbye!\n")
 
 # Getting user input for SKU and quantity
