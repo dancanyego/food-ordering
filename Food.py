@@ -56,21 +56,14 @@ app_actions = {
 
 SALES_TAX_RATE = 0.07
 cart = {}
-cash_amount = 0
 name = input("Hello, What's your name: ")
+print("-" *20)
+
 
 def greet_customer(cust_name):
     print(f"Welcome {cust_name} to {RESTAURANT_NAME}!")
     print("Feel free to order anything from the menu.")
     print("-" * 20)
-
-def get_cash_amount():
-    money = input(f"Hello {name} How much do you have of today: ")
-    if int(money) > 0:
-        cash_amount += money
-        print(f"Money added to wallet your amount is {cash_amount}")
-    else:
-        print("Invalid amount ! try again")
 
 
 # Displaying the menu
@@ -130,11 +123,28 @@ def display_cart():
     tax = subtotals * SALES_TAX_RATE
     total = subtotals + tax
     print(f"Total: ${round(total, 2)}\n")
+def calculate_balance(total_cost):
+    try:
+        user_amount = float(input("Enter The amount you have: "))
+    except ValueError:
+        print("Invalid input Please Enter the corect Value")
+        return None
+    if user_amount >= total_cost:
+        balance = user_amount - total_cost
+        print(f"Purchase successfull !! Your balance is $ {round(balance,2)}")
+        return balance
+    else:
+        remaining = total_cost - user_amount
+        print(f"Failed to complete the Purchase topup $ {round(remaining,2)} to complete purchase")
+        return None
+    
+
 
 # Checking out
 def check_out():
     print("****Checkout****")
     display_cart()
+
     print("Thank you for your order! Goodbye!\n")
 
 # Getting user input for SKU and quantity
