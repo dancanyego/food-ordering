@@ -155,7 +155,7 @@ def check_out():
     # Ask for user's amount and calculate balance
     calculate_balance(total_cost)
     
-    print("Thank you for your order! Goodbye!\n")
+    print(f"Thank you for your order {name}! Goodbye!\n")
 
 # Getting user input for SKU and quantity
 def get_sku_and_quantity(sku_prompt, quantity_prompt=None):
